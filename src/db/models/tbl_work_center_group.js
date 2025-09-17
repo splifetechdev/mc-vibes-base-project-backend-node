@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       work_center_group_id: DataTypes.STRING,
       work_center_group_name: DataTypes.STRING,
       company_id: DataTypes.INTEGER,
+      outsource:DataTypes.BOOLEAN,
       user_create: DataTypes.INTEGER,
       user_update: DataTypes.INTEGER,
     },
