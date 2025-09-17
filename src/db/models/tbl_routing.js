@@ -60,6 +60,8 @@ module.exports = (sequelize, DataTypes) => {
       std_setup_time_pc: DataTypes.DECIMAL,
       operation_cost: DataTypes.DECIMAL,
       iot_um_conv: DataTypes.DECIMAL,
+      leadtime: DataTypes.INTEGER,
+      bath_pcs: DataTypes.DECIMAL,
       user_create: DataTypes.INTEGER,
       user_update: DataTypes.INTEGER,
     },
