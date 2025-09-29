@@ -21,3 +21,5 @@ exports.getAlldatabycompany = async (id) => await item_masterRepository.getAllda
 exports.delete = async (id) => await item_masterRepository.delete(id);
 
 exports.findByitem_masterID = async (item_id,company_id) => await item_masterRepository.findByitem_masterID(item_id,company_id);
+
+exports.V_ItemMaster_From_Econs = async () => await item_masterRepository.V_ItemMaster_From_Econs();

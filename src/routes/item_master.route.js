@@ -10,5 +10,6 @@ router.put("/:id", item_masterController.update);
 router.get("/get/All/:id", item_masterController.getAlldatabycompany);
 router.delete('/:id', item_masterController.delete);
 router.post("/import_item_master", item_masterController.import_item_master);
+router.post("/InsertItemMasterdataFromEcons", item_masterController.InsertItemMasterdataFromEcons);
 
 module.exports = router;

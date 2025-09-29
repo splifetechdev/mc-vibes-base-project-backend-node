@@ -89,3 +89,11 @@ exports.update = async (id, data) =>
       company_id:company_id,
     },
   });
+
+  exports.V_ItemMaster_From_Econs = async () =>
+    await db.sequelize.query(
+      `SELECT * FROM V_INV_From_Econs;`,
+      {
+        type: db.sequelize.QueryTypes.SELECT,
+      }
+    );

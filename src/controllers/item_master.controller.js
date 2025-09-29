@@ -142,3 +142,69 @@ exports.import_item_master = async (req, res) => {
   }
  
 }
+
+exports.InsertItemMasterdataFromEcons = async (req, res) => {
+    let checkdata_success=0;
+    let checkdata_fail=0;
+    try {
+       const result = await item_masterService.V_ItemMaster_From_Econs();
+          if(result.length > 0){
+              result.forEach(async(x,i)=>{
+                try {
+               await item_masterService.create({
+      company_id: req.requester_company_id,
+      item_group_id: x.item_group_id,
+      item_type: x.item_type,
+      item_id: x.item_id,
+      item_name: x.item_name,
+      unit_id: x.unit_id,
+      alias_name: x.alias_name,
+      sheft_id: x.sheft_id,
+      dim_group_id: x.dim_group_id,
+      model_group_id: x.model_group_id,
+      last_purchase_price: x.last_purchase_price,
+      cost_price: x.cost_price,
+      sales_price: x.sales_price,
+      raw_material: x.raw_material,
+      std_dl: x.std_dl,
+      std_foh: x.std_foh,
+      std_voh: x.std_voh,
+      user_create:1,
+      user_update:1,
+                       });
+                checkdata_success++;
+              }catch (error) {
+                checkdata_fail++;
+                console.error(error);
+              }
+              if(i === result.length - 1) {
+                res.status(200).json({
+                  total:result.length,
+                  success:checkdata_success,
+                  fail:checkdata_fail,
+                  message: `Insert data from Econs completed. Success: ${checkdata_success}, Fail: ${checkdata_fail}`,
+                });
+  
+              }
+            });
+          }else{
+             res.status(200).json({
+                  total:result.length,
+                  success:checkdata_success,
+                  fail:checkdata_fail,
+                  message: `Insert data from Econs completed. Success: ${checkdata_success}, Fail: ${checkdata_fail}`,
+                });
+          }
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
+
+exports.get_v_check_rtg_use = async (req, res) => {
+try {
+  res.status(201).json(await tbl_routingService.get_v_check_rtg_use(req.body.rtg_id));
+} catch (error) {
+  res.json({ message: error.message });
+  return;
+}
+};
