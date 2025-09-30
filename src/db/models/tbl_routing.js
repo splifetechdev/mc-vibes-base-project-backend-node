@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       setup_timehr_per: DataTypes.STRING,
       eoq: DataTypes.INTEGER,
       pcs_hr: DataTypes.FLOAT,
+      hr_pcs: DataTypes.FLOAT,
       qty_per: DataTypes.INTEGER,
       qty_by: DataTypes.INTEGER,
       scrap: DataTypes.INTEGER,
