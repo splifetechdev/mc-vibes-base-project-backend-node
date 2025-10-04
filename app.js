@@ -27,6 +27,8 @@ const corsOptions = {
     "http://localhost:8080",
     "http://localhost:8081",
     "https://m-vibe.com",
+    "https://demo.m-vibe.com/",
+    "http://demo.m-vibe.com/",
     "https://www.m-vibe.com",
   ],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
