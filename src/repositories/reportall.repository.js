@@ -51,4 +51,11 @@ exports.delete = async (id) =>
             type: db.sequelize.QueryTypes.SELECT,
           }
         );
-    
+        
+  exports.report_lost_time = async (sql) =>
+  await db.sequelize.query(
+    `${sql}`,
+    {
+     type: db.sequelize.QueryTypes.SELECT,
+    }
+  );  
