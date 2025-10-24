@@ -46,7 +46,7 @@ exports.report_lost_time = async (req, res) =>{
   console.log(req.body)
   let sql=`SELECT * from V_rpt_downtime where CONVERT(date, tcdate, 103) 
       BETWEEN CONVERT(date, '${req.body.datefrom}', 103)
-          and CONVERT(date, '${req.body.dateto}', 103)
+          and CONVERT(date, '${req.body.dateto}', 103) 
   `;
 if(req.body.wc_group){
   sql+=` and wc_group = '${req.body.wc_group}'`
@@ -63,4 +63,34 @@ if(req.body.downtime_id){
   sql+=` order by tcdate ASC`
    console.log(sql)
   res.json(await reportallService.report_lost_time(sql));
+}
+
+exports.report_performance = async (req, res) =>{
+  console.log(req.body)
+  let sql=`SELECT * from V_rpt_performance where CONVERT(date, tcdate, 103) 
+      BETWEEN CONVERT(date, '${req.body.datefrom}', 103)
+          and CONVERT(date, '${req.body.dateto}', 103) 
+
+  `;
+if(req.body.wc_group){
+  sql+=` and wc_group = '${req.body.wc_group}'`
+}
+if(req.body.work_center_id){
+  sql+=` and work_center_id = '${req.body.work_center_id}'`
+}
+if(req.body.mch_id){
+  sql+=` and mch_id = '${req.body.mch_id}'`
+}
+if(req.body.worker_id){
+  sql+=` and worker_id = '${req.body.worker_id}'`
+}
+if(req.body.work_order){
+  sql+=` and ord_no = '${req.body.work_order}'`
+}
+if(req.body.item_id){
+  sql+=` and item_id = '${req.body.item_id}'`
+}
+  sql+=` order by tcdate ASC`
+   console.log(sql)
+  res.json(await reportallService.report_performance(sql));
 }
