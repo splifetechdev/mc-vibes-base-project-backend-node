@@ -11,7 +11,7 @@ exports.findByCompany = async (company_id) =>
   await tbl_workerRepository.findByCompany(company_id);
 
 exports.findByStatus = async (companyId) => {
-  return await tbl_workerRepository.findByStatus(companyId);
+  await tbl_workerRepository.findByStatus(companyId);
 };
 
 exports.delete = async (id) => await tbl_workerRepository.delete(id);
